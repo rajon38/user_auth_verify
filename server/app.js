@@ -5,6 +5,7 @@ const bodyParser =require('body-parser');
 
 //Security middleware lib import
 const rateLimit =require('express-rate-limit');
+const mongoSanitize =require('express-mongo-sanitize');
 const helmet =require('helmet');
 const xss =require('xss-clean');
 const hpp =require('hpp');
@@ -12,6 +13,7 @@ const cors =require('cors');
 
 //Database lib import
 const mongoose = require('mongoose');
+app.use(mongoSanitize());
 app.use(express.static('client/build'));
 const {readdirSync} = require("fs");
 const path = require("path");
