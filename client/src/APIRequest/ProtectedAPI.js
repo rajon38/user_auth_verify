@@ -1,17 +1,17 @@
-import {BaseURL} from "../Helper/config";
 import {getToken} from "../Helper/SessionHelper";
 import store from "../Redux/store/store";
 import {HideLoader, ShowLoader} from "../Redux/state-slice/settings-slice";
 import {ErrorToast, SuccessToast} from "../Helper/FromHelper";
 import axios from "axios";
 import {setAuthenticated} from "../Redux/state-slice/protected-slice";
+import {BaseURL} from "../Helper/config";
 
 const AxiosHeader= {headers:{"token":getToken()}}
 
 export async function getProtectedData(){
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL + "/protected";
+        let URL =  BaseURL + "/protected";
         let result = await axios.get(URL,AxiosHeader);
         store.dispatch(HideLoader());
         if (result.status === 200 ) {

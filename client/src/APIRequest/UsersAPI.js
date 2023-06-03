@@ -41,7 +41,7 @@ export async function RegistrationRequest(email,name,password){
 export async function LoginRequest(email,password){
     try {
         store.dispatch(ShowLoader());
-        let URL = BaseURL+"/login";
+        let URL = BaseURL + "/login";
         let PostBody = {"email":email, "password":password};
         let res = await axios.post(URL,PostBody);
         debugger
